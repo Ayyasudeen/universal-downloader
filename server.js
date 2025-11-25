@@ -5,6 +5,7 @@ import { promisify } from 'util';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import { ensureYtDlp } from './download-ytdlp.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -135,6 +136,20 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Download yt-dlp before starting server (only on Linux/Railway)
+async function startServer() {
+    if (process.platform !== 'win32') {
+        try {
+            await ensureYtDlp();
+        } catch (error) {
+            console.error('Failed to download yt-dlp:', error);
+            console.log('Server will start anyway, but video downloads may fail');
+        }
+    }
+
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
+
+startServer();

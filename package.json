@@ -7,7 +7,6 @@
     "server": "node server.js",
     "client": "vite",
     "build": "vite build",
-    "postinstall": "bash install-ytdlp.sh || echo 'Skipping yt-dlp install on Windows'",
     "start": "cross-env NODE_ENV=production node server.js",
     "preview": "vite preview"
   },
