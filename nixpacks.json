@@ -1,0 +1,12 @@
+{
+    "providers": [
+        "node"
+    ],
+    "phases": {
+        "setup": {
+            "nixPkgs": [
+                "python3"
+            ]
+        }
+    }
+}
