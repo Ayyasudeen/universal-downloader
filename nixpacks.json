@@ -1,3 +1,4 @@
+```json
 {
     "providers": [
         "node"
@@ -5,8 +6,10 @@
     "phases": {
         "setup": {
             "nixPkgs": [
+                "nodejs",
                 "python3"
             ]
         }
     }
 }
+```
