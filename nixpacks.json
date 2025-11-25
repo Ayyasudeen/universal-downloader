@@ -1,8 +1,4 @@
-```json
 {
-    "providers": [
-        "node"
-    ],
     "phases": {
         "setup": {
             "nixPkgs": [
@@ -12,4 +8,3 @@
         }
     }
 }
-```
